@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './navbar'
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 import wikipediaLink from '../../src/assets/images/wikipedia.svg'
 import redditLink from '../../src/assets/images/reddit-color.svg'
