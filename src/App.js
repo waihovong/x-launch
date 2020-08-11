@@ -1,8 +1,6 @@
 import React from 'react';
-import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import  {BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
 import Headroom from 'react-headroom';
-
-import SpaceX from '../src/assets/images/SpaceX-Logo.svg';
 
 import Navbar from './components/navbar';
 import LandingPage from './components/landingpage';
