@@ -89,7 +89,7 @@ export default function LatestLaunch() {
                         </div>
                         <div className="flight--kit">
                             <div className="flight--section flight__site__realtime">
-                                <p className="flight__format flight__site flight--header">LAUNCH SITE </p>
+                                <p className="flight__format flight__site flight--header">LAUNCH SITE</p>
                                 <div className="flight__site">
                                 {launchPad.map((launchP, index) => {
                                     if(launchP.id === launch.launchpad) {
