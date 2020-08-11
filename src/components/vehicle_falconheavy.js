@@ -22,7 +22,6 @@ export default function VehicleFalconHeavy() {
                 const data = await response.json();
                 setRocket(data);
                 setIsLoaded(true);
-                console.log(data);
             } catch (error) {
                 setIsLoaded(false);
                 setError(error);
