@@ -1,5 +1,5 @@
 import React from 'react';
-import  {BrowserRouter , Switch, Route, } from 'react-router-dom';
+import  {BrowserRouter as HashRouter, Switch, Route, } from 'react-router-dom';
 import Headroom from 'react-headroom';
 
 import Navbar from './components/navbar';
@@ -16,7 +16,7 @@ import './App.css';
 function App() {
 	return (
 		<div className="App">
-			<BrowserRouter basename={'/x-launch'}>
+			<HashRouter basename="/x-launch">
 				<Headroom>
 					< Navbar />
 				</Headroom>
@@ -39,7 +39,7 @@ function App() {
 						< LatestLaunch />
 					</Route>
 				</Switch>
-			</BrowserRouter>
+			</HashRouter>
 		</div>
 	);
 }
