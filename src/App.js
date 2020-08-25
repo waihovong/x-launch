@@ -16,7 +16,7 @@ import './App.css';
 function App() {
 	return (
 		<div className="App">
-			<HashRouter basename={"/x-launch"}>
+			<HashRouter basename={`${process.env.PUBLIC_URL}/`}>
 				<Headroom>
 					< Navbar />
 				</Headroom>
