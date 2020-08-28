@@ -5,6 +5,9 @@ X launch is a web application utilising [r-spacex's SpaceX API](https://github.c
 ## Disclaimer
 This site is not affilicated, authorised or endorsed by SpaceX. All assets used are property of SpaceX.
 
+## Demo
+Here is a working live demo: https://waihovong.github.io/x-launch/
+
 ## Available Scripts
 
 In the project directory, you can run:
