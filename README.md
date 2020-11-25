@@ -1,5 +1,5 @@
 ## X-Launch
-X launch is a web application utilising [r-spacex's SpaceX API](https://github.com/r-spacex/SpaceX-API). X launch provides mission details of upcoming and previous launch missions. As well as providing information on SpaceX's vehicle fleet.
+X-launch is a web application utilising [r-spacex's SpaceX API](https://github.com/r-spacex/SpaceX-API). X-launch provides mission details of upcoming and previous launch missions. As well as providing information on SpaceX's vehicle fleet.
 
 ![demo](https://github.com/waihovong/x-launch/blob/master/demo.gif)
 
