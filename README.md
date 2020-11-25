@@ -3,6 +3,12 @@ X launch is a web application utilising [r-spacex's SpaceX API](https://github.c
 
 ![demo](https://github.com/waihovong/x-launch/blob/master/demo.gif)
 
+### Key Features
+* View the next upcoming launch mission
+* Watch a replay of the most recent launch including a photo gallery
+* View all previous SpaceX launch missions 
+* Overview of all launch vehicles
+
 ## Disclaimer
 This site is not affilicated, authorised or endorsed by SpaceX. All assets used are property of SpaceX.
 
