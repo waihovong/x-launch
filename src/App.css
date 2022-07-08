@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-html, body {
+/* html, body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -32,13 +29,11 @@ html, body {
 .navigation-container {
   width: 100%;
   box-shadow: rgba(0,0,0,0.5) 0px 5px 20px 0px;
-  /* position: relative; */
 }
 
 .navigation-container-inner {
   display: flex;
   justify-content: space-between;
-  /* position: fixed; */
 }
 
 
@@ -68,7 +63,6 @@ html, body {
 }
 
 .previous-background {
-  background: url(../src/assets/images/spacex-timelapse.jpg);
   background-size: cover;
   background-position: 100% 80%;
   background-repeat: no-repeat;
@@ -369,7 +363,6 @@ img {
 }
 
 .landing-container {
-  background: url(../src/assets/images/spacex-landingF.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -378,7 +371,6 @@ img {
 }
 
 .falcon-background {
-  background: url(../src/assets/images/spacex-falcon9-2.jpg);
   background-size: cover;
   background-position: 100% 100%;
   background-repeat: no-repeat;
@@ -386,7 +378,6 @@ img {
 }
 
 .falconH-background {
-  background: url(../src/assets/images/spacex-falconH-2.jpg);
   background-size: cover;
   background-position: 100% 20%;
   background-repeat: no-repeat;
@@ -394,7 +385,6 @@ img {
 }
 
 .starship-background {
-  background: url(../src/assets/images/spacex-starship.jpg);
   background-size: cover;
   background-position: 100% 60%;
   background-repeat: no-repeat;
@@ -764,4 +754,4 @@ button::before, button::after {
   font-size: 0.95em;
   font-weight: 800;
   text-decoration: none;
-}
+} */

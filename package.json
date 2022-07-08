@@ -4,15 +4,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
+    "@babel/runtime": "^7.11.0",
+    "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-player": "^2.6.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.2"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-player": "^2.10.1",
+    "react-router-dom": "^5.3.3",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +39,23 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^4.0.8",
-    "gh-pages": "^3.1.0"
+    "@babel/core": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "autoprefixer": "^10.4.7",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^3.2.3",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.5"
+  },
+  "description": "X-launch is a web application utilising [r-spacex's SpaceX API](https://github.com/r-spacex/SpaceX-API). X-launch provides mission details of upcoming and previous launch missions. As well as providing information on SpaceX's vehicle fleet.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waihovong/x-launch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waihovong/x-launch/issues"
   }
 }

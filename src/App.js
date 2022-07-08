@@ -1,9 +1,8 @@
 import React from 'react';
 import  {BrowserRouter as HashRouter, Switch, Route, } from 'react-router-dom';
-import Headroom from 'react-headroom';
 
-import Navbar from './components/navbar';
-import LandingPage from './components/landingpage';
+import Navbar from './components/layout/navigation/Navbar/Navbar';
+import LandingPage from './components/pages/Landingpage/landingpage';
 import LatestLaunch from './components/latestlaunch';
 import FalconHeavy from './components/vehicle_falconheavy';
 import Starship from './components/vehicle_starship';
@@ -15,12 +14,11 @@ import './App.css';
 
 function App() {
 	return (
-		<div className="App">
+		<div className="App box-border">
 			<HashRouter basename="/x-launch">
-				<Headroom>
-					< Navbar />
-				</Headroom>
-				<Switch>
+				{/* < Navbar /> */}
+				< LandingPage />
+				{/* <Switch>
 					<Route path='/missions'>
 						< PreviousLaunch />
 					</Route>
@@ -35,10 +33,9 @@ function App() {
 					</Route>
 					<Route path='/launch/:id' component={Launch}></Route>
 					<Route path='/'>
-						< LandingPage />
 						< LatestLaunch />
 					</Route>
-				</Switch>
+				</Switch> */}
 			</HashRouter>
 		</div>
 	);
