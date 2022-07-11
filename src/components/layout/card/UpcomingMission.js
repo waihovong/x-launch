@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function UpcomingMission({missionName, missionDetails, flightNumber, missionDate, launchpad}) {
+function UpcomingMission({missionName, missionDetails, flightNumber, missionDate, launchPad}) {
     return (
         <div className='flex justify-around'>
             <div className='flex justify-center flex-col h-80v'>
@@ -12,8 +12,10 @@ export default function UpcomingMission({missionName, missionDetails, flightNumb
             <div className='flex justify-center flex-col h-80v text-2xl'>
                 <h2 className='font-semibold uppercase text-white'>{flightNumber}</h2>
                 <h2 className='font-semibold uppercase text-white'>{missionDate}</h2>
-                <h2 className='text-white'>{launchpad}</h2>
+                <h2 className='text-white font-semibold'>{launchPad}</h2>
             </div>
         </div>
     );
 }
+
+export default UpcomingMission;

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Navbar from '../../layout/navigation/Navbar/Navbar';
-import UpcomingMission  from "./upcomingmission";
+import UpcomingMission  from "../../../components/layout/card/UpcomingMission";
+import MissionCard from "../../layout/card/MissionCard";
+
 export default function LandingPage() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -8,70 +13,46 @@ export default function LandingPage() {
 	const [launchPad, setLaunchPad] = useState([]);
 
 	useEffect(() => {
-		fetchNextLaunch();
-		async function fetchNextLaunch() {
+
+		const apiConstant = "https://api.spacexdata.com/v4";
+		fetchLandingPage();
+		//call constant here or something
+		async function fetchLandingPage() {
 			try {
-				const url = "https://api.spacexdata.com/v4/launches/next?limit=2"
-				const url2 = "https://api.spacexdata.com/v4/launchpads"
-				const response = await fetch(url);
-				const response2 = await fetch(url2);
-				const data = await response.json();
-				const data2 = await response2.json();
-				setNextLaunch(data);
-				setLaunchPad(data2);
+				const nextLaunchResponse = await fetch(`${apiConstant}/launches/next`);
+				const launchPadResponse = await fetch(`${apiConstant}/launchpads`);
+				
+				const nextLaunchJson = await nextLaunchResponse.json();
+				const launchPadJson = await launchPadResponse.json();
+
+				setNextLaunch(nextLaunchJson);
+				setLaunchPad(launchPadJson);
+
 				setIsLoaded(true);
-			} catch (error) {
+			} catch(error) {
 				setIsLoaded(false);
 				setError(error);
 			}
-		}
+		};
 	}, []);
+
+	const getLaunchPadName = launchPad.map((listLaunchPad, index) => {
+		if (listLaunchPad.id === nextLaunch.launchpad ) {
+			return listLaunchPad.name;
+		}
+	});
+	
 	return (
-		<div className="box-border landing-container bg-landing-image-gradient bg-cover min-h-screen bg-no-repeat bg-center ">
-			<div className="p-40 py-14">
-				< Navbar />
-				<UpcomingMission 
-					missionName={nextLaunch.name}
-					missionDetails={nextLaunch.details ? nextLaunch.details : "No Mission Details"}
-					flightNumber={nextLaunch.flight_number}
-					missionDate={new Date(nextLaunch.date_utc).toDateString()}
-					launchpad={launchPad.map((listLaunchPad, index) => {
-						if (listLaunchPad.id === nextLaunch.launchpad) {
-							return <span key={index} className="font-semibold">{listLaunchPad.name}</span>
-						}
-					})}
-				/>
-			</div>
-			{/* <div>
-				<div className="landing-separator">
-				<div className="mission--next mission-container">
-					<div className="next-header upcoming-header">
-						<h3 className="upcoming--launch upcoming--details">UPCOMING MISSION</h3>
-						<h2 className="launch--recap upcoming--launch__name upcoming--details">{nextLaunch.name}</h2>
-					</div>
-				</div>
-				<div className="next-header next-mission mission-container line--format">
-					<div className="flight-mission">
-						<h3 className="upcoming--launch upcoming--flightnum upcoming--details">FLIGHT: #{nextLaunch.flight_number}</h3>
-						<div className="flight__site__realtime">
-                                <div className="upcoming--details">
-                                {launchPad.map((launchP, index) => {
-									if(launchP.id === nextLaunch.launchpad) {
-                                        return <div key={index} className="upcoming--details">
-                                                <h3 className="upcoming--details">{launchP.name}</h3>
-                                                </div>
-                                        }
-                                    }
-									)}
-							</div>
-						</div>
-						<h3 className="upcoming--launch upcoming--details">{new Date (nextLaunch.date_utc).toDateString()}</h3>
-					</div>
-					<hr/>
-					<span className="next-details">{nextLaunch.details ? nextLaunch.details : 'No Mission Details' }</span>
-				</div>
-				</div>
-			</div> */}
+		// TODO: Change the responsiveness of the nav bar for mobiles
+		<div className="bg-landing-image-gradient bg-cover min-h-screen bg-no-repeat bg-center">
+			<Navbar/>
+			<UpcomingMission 
+				missionName={nextLaunch.name}
+				missionDetails={nextLaunch.details ? nextLaunch.details : "No Mission Details"}
+				flightNumber={nextLaunch.flight_number}
+				missionDate={new Date(nextLaunch.date_utc).toDateString()}
+				launchPad = {getLaunchPadName.filter(name => name)}
+			/>
 		</div>
 	);
 }

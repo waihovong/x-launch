@@ -1,25 +1,23 @@
 import React from 'react';
-import  {BrowserRouter as HashRouter, Switch, Route, } from 'react-router-dom';
+import  {BrowserRouter as HashRouter, Switch, Route, Router} from 'react-router-dom';
 
 import Navbar from './components/layout/navigation/Navbar/Navbar';
 import LandingPage from './components/pages/Landingpage/landingpage';
-import LatestLaunch from './components/latestlaunch';
 import FalconHeavy from './components/vehicle_falconheavy';
 import Starship from './components/vehicle_starship';
-import PreviousLaunch from './components/previous';
+import PreviousLaunch from './components/pages/PreviousMissions/previousmissionspage';
 import Launch from './components/launch';
 import F9 from './components/vehicle_falcon9';
 
-import './App.css';
-
 function App() {
 	return (
-		<div className="App box-border">
-			<HashRouter basename="/x-launch">
-				{/* < Navbar /> */}
-				< LandingPage />
-				{/* <Switch>
-					<Route path='/missions'>
+		<div className="App">
+			<HashRouter basename="/x-launch">	
+				<Switch>
+					<Route exact path="/">
+						<LandingPage />
+					</Route>
+					<Route path='/PreviousMissions/Previous'>
 						< PreviousLaunch />
 					</Route>
 					<Route path='/rocket/falcon9'>
@@ -32,10 +30,7 @@ function App() {
 						< Starship />
 					</Route>
 					<Route path='/launch/:id' component={Launch}></Route>
-					<Route path='/'>
-						< LatestLaunch />
-					</Route>
-				</Switch> */}
+				</Switch>
 			</HashRouter>
 		</div>
 	);
