@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Landing page to display upcoming mission details
 function UpcomingMission({missionName, missionDetails, flightNumber, missionDate, launchPad}) {
     return (
         <div className='flex justify-around min-h-[80vh] align-center xs:flex xs:flex-col sm:flex sm:flex-col'>

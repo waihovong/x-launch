@@ -1,6 +1,7 @@
 import React from 'react';
 import  { Link } from 'react-router-dom';
 
+//Navigation for whole site
 function Navbar() {
     return (
         <nav className='container mx-auto w-full flex flex-wrap items-center text-white justify-between'>
