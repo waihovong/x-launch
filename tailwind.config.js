@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'landing-image' : "url('/src/assets/images/landing-image.png')",
-        'landing-image-gradient' : "linear-gradient(0deg, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('/src/assets/images/landing-image.png')",
+        'landing-image' : "url('/src/assets/images/Hero/landing-image.png')",
+        'landing-image-gradient' : "linear-gradient(0deg, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Hero/landing-image.png')",
+        'missions-image': "url('/src/assets/images/Wallpapers/dragon-wallpaper.jpg')"
       },
       height: {
         "10v": "10vh",
