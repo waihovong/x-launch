@@ -3,6 +3,7 @@ import  { Link } from 'react-router-dom';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Navbar from '../../layout/navigation/Navbar/Navbar';
+import MissionCard from '../../layout/card/MissionCard';
 
 export default function PreviousLaunch() {
     const [error, setError] = useState(null)
@@ -44,79 +45,80 @@ export default function PreviousLaunch() {
         return <div className="loading-progress"> <CircularProgress color="secondary" /></div>
         } else {
             return (
-                <div>
+                <div className='bg-missions-image h-30v bg-no-repeat [background-position-y:30%] [background-position-x:40%] md:[background-position-x:35%] sm:[background-position-x:30%] xs:[background-position-x:25%]'>
                     <Navbar/>
-                    <div className="previous-background">
-                        <div className="container-header-title">
-                            <div className="container-inner">
-                                <h2 className="header-inner">MISSIONS</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="launch-container">
-                        <div className="mission-details mission-container">
-                            <div className="previous-mission-container">
-                                {prevLaunch.map((prev, index) =>
-                                    <div key={index} className="previous-launch-container">
-                                        <div className="previous-upper-container">
-                                            <div className="previous-launch-time">
-                                                <span className="previous--format">{new Date (prev.date_utc).toLocaleDateString()}</span>
-                                            </div>
-                                            <div className="previous-launch-launchpad">
-                                                {launchPad.map((launchP, index) => {
-                                                    if(launchP.id === prev.launchpad) {
-                                                        return <div key={index}>
-                                                                <span className="previous--launchpad--type previous--format">{launchP.name}</span>
-                                                                </div>
-                                                        }
-                                                    }
-                                                )}
-                                            </div>
-                                            <div className="previous-launch-rocket">
-                                                {rockets.map((rocketID, index) => {
-                                                    if(rocketID.id === prev.rocket) {
-                                                        return <div key={index}>
-                                                                <span className="previous--rocket--type previous--format">{rocketID.name}</span>
-                                                                </div>
-                                                        }
-                                                    }
-                                                )}
-                                            </div>
-                                            <div className="previous-launch-more">
-                                                <Link to={`/launch/${prev.id}`} className="previous--more">
-                                                    <span className="previous--format previous--more">MORE DETAILS</span>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className="previous-lower-container">
-                                            <div className="previous-launch-flightnumber">
-                                                <span className="flight--number--format"></span><span className="previous--format previous-flightnumber">{prev.flight_number}</span>
-                                            </div>
-                                            <div className="previous-launch-mission-patch">
-                                                <img src={prev.links.patch.small || null }
-                                                className="patch"
-                                                alt={prev.flight_number + " Mission Patch"}
-                                                />
-                                            </div>
-                                            <div className="previous-right-container">
-                                                <div className="previous-launch-name">
-                                                    <div className="previous-launch-status">
-
-                                                        <span className={prev.success ? 'status-success statusbar' : 'status-fail statusbar'}>{ (prev.success) ? ' SUCCESSFUL ' : ' FAILURE '}</span>
-                                                    </div>
-                                                    <span className="previous--format previous--name">{prev.name}</span>
-                                                </div>
-                                                <div className="previous-launch-details">
-                                                    <span className="previous--format previous--details">{prev.details ? prev.details : 'No Mission Details'}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                    <MissionCard />
                 </div>
         );
     }
 }
+{/* <div className="previous-background">
+    <div className="container-header-title">
+        <div className="container-inner">
+            <h2 className="header-inner">MISSIONS</h2>
+        </div>
+    </div>
+</div>
+<div className="launch-container">
+    <div className="mission-details mission-container">
+        <div className="previous-mission-container">
+            {prevLaunch.map((prev, index) =>
+                <div key={index} className="previous-launch-container">
+                    <div className="previous-upper-container">
+                        <div className="previous-launch-time">
+                            <span className="previous--format">{new Date (prev.date_utc).toLocaleDateString()}</span>
+                        </div>
+                        <div className="previous-launch-launchpad">
+                            {launchPad.map((launchP, index) => {
+                                if(launchP.id === prev.launchpad) {
+                                    return <div key={index}>
+                                            <span className="previous--launchpad--type previous--format">{launchP.name}</span>
+                                            </div>
+                                    }
+                                }
+                            )}
+                        </div>
+                        <div className="previous-launch-rocket">
+                            {rockets.map((rocketID, index) => {
+                                if(rocketID.id === prev.rocket) {
+                                    return <div key={index}>
+                                            <span className="previous--rocket--type previous--format">{rocketID.name}</span>
+                                            </div>
+                                    }
+                                }
+                            )}
+                        </div>
+                        <div className="previous-launch-more">
+                            <Link to={`/launch/${prev.id}`} className="previous--more">
+                                <span className="previous--format previous--more">MORE DETAILS</span>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="previous-lower-container">
+                        <div className="previous-launch-flightnumber">
+                            <span className="flight--number--format"></span><span className="previous--format previous-flightnumber">{prev.flight_number}</span>
+                        </div>
+                        <div className="previous-launch-mission-patch">
+                            <img src={prev.links.patch.small || null }
+                            className="patch"
+                            alt={prev.flight_number + " Mission Patch"}
+                            />
+                        </div>
+                        <div className="previous-right-container">
+                            <div className="previous-launch-name">
+                                <div className="previous-launch-status">
+
+                                    <span className={prev.success ? 'status-success statusbar' : 'status-fail statusbar'}>{ (prev.success) ? ' SUCCESSFUL ' : ' FAILURE '}</span>
+                                </div>
+                                <span className="previous--format previous--name">{prev.name}</span>
+                            </div>
+                            <div className="previous-launch-details">
+                                <span className="previous--format previous--details">{prev.details ? prev.details : 'No Mission Details'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            )}
+        </div>
+    </div>
+</div> */}

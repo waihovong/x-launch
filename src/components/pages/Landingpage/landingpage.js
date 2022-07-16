@@ -43,6 +43,7 @@ export default function LandingPage() {
 	});
 	
 	return (
+		//TODO: add error loading page or skeleton loading page
 		// TODO: Change the responsiveness of the nav bar for mobiles
 		<div className="bg-landing-image-gradient bg-cover min-h-screen bg-no-repeat bg-center">
 			<Navbar/>
