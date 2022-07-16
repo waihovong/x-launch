@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 
-import '../App.css'
-
-import falconImage from '../../src/assets/images/falcon9ren.png';
+import falconImage from '../../src/assets/images/Rockets/falcon9.png';
 
 
 export default function VehicleFalcon9() {

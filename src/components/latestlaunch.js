@@ -6,8 +6,6 @@ import redditLink from '../../src/assets/images/reddit-color.svg'
 import presskitLink from '../../src/assets/images/audit-report-survey.svg'
 import articleLink from '../../src/assets/images/computer-laptop.svg'
 
-import '../App.css'
-
 import ReactPlayer from 'react-player';
 
 export default function LatestLaunch() {

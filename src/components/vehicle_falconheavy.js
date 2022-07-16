@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import '../App.css'
 
-import falconHeavyImage from '../../src/assets/images/falconHren.png';
+import falconHeavyImage from '../../src/assets/images/Rockets/falconHeavy.png';
 
 
 export default function VehicleFalconHeavy() {

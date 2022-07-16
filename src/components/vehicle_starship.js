@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 
-import '../App.css'
-
-import starshipImage from '../../src/assets/images/starshipren2.png';
+import starshipImage from '../../src/assets/images/Rockets/starshipren2.png';
 
 
 export default function VehicleStarship() {
