@@ -11,6 +11,7 @@ export default function PreviousLaunch() {
     const [prevLaunch, setPrevLaunch] = useState([]);
     const [launchPad, setLaunchPad] = useState([]);
     const [rockets, setRockets] = useState([]);
+    const [rocketId, setRocketId] = useState([]);
  
     useEffect(() => {
         fetchSpaceX();
@@ -47,7 +48,21 @@ export default function PreviousLaunch() {
             return (
                 <div className='bg-missions-image h-30v bg-no-repeat [background-position-y:30%] [background-position-x:40%] md:[background-position-x:35%] sm:[background-position-x:30%] xs:[background-position-x:25%]'>
                     <Navbar/>
-                    <MissionCard />
+                    {prevLaunch.map((previousMission, index) => {
+                        return (
+                            <MissionCard 
+                            missionName={previousMission.name}
+                            flightNumber={previousMission.flight_number}
+                            time={new Date (previousMission.date_utc).toLocaleDateString()}
+                            rocket={rockets.map((rocket, index) => {
+                                if(rocket.id === previousMission.rocket) {
+                                    return <>{rocket.name}</>
+                                }
+                            })}
+                            />
+                        )
+                    })}
+
                 </div>
         );
     }
