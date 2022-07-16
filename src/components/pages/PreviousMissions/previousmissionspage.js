@@ -11,7 +11,6 @@ export default function PreviousLaunch() {
     const [prevLaunch, setPrevLaunch] = useState([]);
     const [launchPad, setLaunchPad] = useState([]);
     const [rockets, setRockets] = useState([]);
-    const [rocketId, setRocketId] = useState([]);
  
     useEffect(() => {
         fetchSpaceX();
@@ -40,6 +39,14 @@ export default function PreviousLaunch() {
         }
     }, []);
 
+    const getRocketID = rockets.map((rocket, index) => {
+        return rocket.id;
+    });
+
+    const getRocketName = rockets.map((rocket, index) => {
+        return rocket.name;
+    })
+
     if(error) {
         return <div>Error: {error.message}</div>
     } else if (!isLoaded) {
@@ -54,11 +61,20 @@ export default function PreviousLaunch() {
                             missionName={previousMission.name}
                             flightNumber={previousMission.flight_number}
                             time={new Date (previousMission.date_utc).toLocaleDateString()}
+                            //TODO: Find if there is better way to map and return just rocket.id and rocket.name
+                            //so no mapping is needed here and only comparison is name
                             rocket={rockets.map((rocket, index) => {
                                 if(rocket.id === previousMission.rocket) {
                                     return <>{rocket.name}</>
                                 }
                             })}
+                            launchPad={launchPad.map((listOfLaunchPads, index) => {
+                                if(listOfLaunchPads.id === previousMission.launchpad) {
+                                    return <>{listOfLaunchPads.name}</>
+                                }
+                            })}
+                            //TODO: make component for success and fail color changes depending on conditional
+                            // status={}
                             />
                         )
                     })}
