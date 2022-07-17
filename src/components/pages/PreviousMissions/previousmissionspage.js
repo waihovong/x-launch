@@ -53,8 +53,6 @@ export default function PreviousLaunch() {
         day: "2-digit",
         month: "long",
         year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
         hour12: true
     }
 
@@ -64,41 +62,85 @@ export default function PreviousLaunch() {
         return <div className="loading-progress"> <CircularProgress color="secondary" /></div>
         } else {
             return (
-                <div className='bg-missions-image h-30v bg-no-repeat [background-position-y:30%] [background-position-x:40%] md:[background-position-x:35%] sm:[background-position-x:30%] xs:[background-position-x:25%]'>
-                    <Navbar/>
-                    {prevLaunch.map((previousMission, index) => {
-                        console.log(previousMission);
-                        return (
-                            //TODO: On click of mission card, go to specific mission link to new page
-                            <MissionCard
-                            //TODO: Find default mission f9 logo patch
-                            missionPatch={previousMission.links.patch.small} 
-                            missionName={previousMission.name}
-                            flightNumber={previousMission.flight_number}
-                            time={new Date (previousMission.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
-                            //TODO: Find utc string time component, maybe use momentjs
-                            // time={new Date (previousMission.date_utc).toUTCString("en-GB", dateTimeOption)}
-                            //TODO: Find if there is better way to map and return just rocket.id and rocket.name
-                            //so no mapping is needed here and only comparison is name
-                            rocket={rockets.map((rocket, index) => {
-                                if(rocket.id === previousMission.rocket) {
-                                    return <>{rocket.name}</>
-                                }
+                <div className='bg-black'>
+                    <div className='bg-missions-image h-30v bg-no-repeat [background-position-y:30%] [background-position-x:40%] md:[background-position-x:35%] sm:[background-position-x:30%] xs:[background-position-x:25%]'>
+                        <Navbar/>
+                    </div>
+                    <div className='grid grid-cols-2 gap-x-14'>
+                        <div className='grid justify-end'>
+                            <div className='h-40 text-8xl -mt-14 text-white font-semibold grid justify-start flex-col z-40'>
+                                MISSIONS
+                            </div>
+                            {prevLaunch.map((previousMission, index) => {
+                                return (
+                                    //TODO: responsive design on cards, smaller = square possibly remove logo
+                                    //TODO: On click of mission card, go to specific mission link to new page
+                                    <MissionCard
+                                    //TODO: Find default mission f9 logo patch
+                                    missionPatch={previousMission.links.patch.small} 
+                                    missionName={previousMission.name}
+                                    flightNumber= {previousMission.flight_number}
+                                    time={new Date (previousMission.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
+                                    //TODO: Find utc string time component, maybe use momentjs
+                                    // time={new Date (previousMission.date_utc).toUTCString("en-GB", dateTimeOption)}
+                                    //TODO: Find if there is better way to map and return just rocket.id and rocket.name
+                                    //so no mapping is needed here and only comparison is name
+                                    rocket={rockets.map((rocket, index) => {
+                                        if(rocket.id === previousMission.rocket) {
+                                            return <>{rocket.name}</>
+                                        }
+                                    })}
+                                    launchPad={launchPad.map((listOfLaunchPads, index) => {
+                                        if(listOfLaunchPads.id === previousMission.launchpad) {
+                                            return <>{listOfLaunchPads.name}</>
+                                        }
+                                    })}
+                                    status={
+                                        <StatusCard 
+                                        isSuccessful={previousMission.success}
+                                        />
+                                    }
+                                    />
+                                )
                             })}
-                            launchPad={launchPad.map((listOfLaunchPads, index) => {
-                                if(listOfLaunchPads.id === previousMission.launchpad) {
-                                    return <>{listOfLaunchPads.name}</>
-                                }
+                        </div>
+                        <div className='grid'>
+                            <div className='z-40 h-40  mb-10 text-6xl text-white font-semibold flex justify-end flex-col'>
+                                UPCOMING
+                            </div>
+                            {prevLaunch.map((previousMission, index) => {
+                                return (
+                                    //TODO: On click of mission card, go to specific mission link to new page
+                                    <MissionCard
+                                    //TODO: Find default mission f9 logo patch
+                                    missionPatch={previousMission.links.patch.small} 
+                                    missionName={previousMission.name}
+                                    flightNumber={previousMission.flight_number}
+                                    time={new Date (previousMission.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
+                                    //TODO: Find utc string time component, maybe use momentjs
+                                    // time={new Date (previousMission.date_utc).toUTCString("en-GB", dateTimeOption)}
+                                    //TODO: Find if there is better way to map and return just rocket.id and rocket.name
+                                    //so no mapping is needed here and only comparison is name
+                                    rocket={rockets.map((rocket, index) => {
+                                        if(rocket.id === previousMission.rocket) {
+                                            return <>{rocket.name}</>
+                                        }
+                                    })}
+                                    launchPad={launchPad.map((listOfLaunchPads, index) => {
+                                        if(listOfLaunchPads.id === previousMission.launchpad) {
+                                            return <>{listOfLaunchPads.name}</>
+                                        }
+                                    })}
+                                    status={
+                                        <StatusCard 
+                                        isSuccessful={previousMission.success}
+                                        />
+                                    }
+                                    />
+                                )
                             })}
-                            status={
-                                <StatusCard 
-                                isSuccessful={previousMission.success}
-                                />
-                            }
-                            />
-                        )
-                    })}
-
+                        </div>
+                    </div>
                 </div>
         );
     }
