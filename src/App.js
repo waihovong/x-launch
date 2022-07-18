@@ -17,10 +17,10 @@ function App() {
 					<Route exact path="/">
 						<LandingPage />
 					</Route>
-					<Route path='/PreviousMissions/Previous'>
+					<Route path='/Previous'>
 						< PreviousLaunch />
 					</Route>
-					<Route path='/rocket/falcon9'>
+					{/* <Route path='/rocket/falcon9'>
 						< F9 />
 					</Route>
 					<Route path='/rocket/falconheavy'>
@@ -28,8 +28,8 @@ function App() {
 					</Route>
 					<Route path='/rocket/starship'>
 						< Starship />
-					</Route>
-					<Route path='/launch/:id' component={Launch}></Route>
+					</Route> */}
+					{/* <Route path='/launch/:id' component={Launch}></Route> */}
 				</Switch>
 			</HashRouter>
 		</div>
