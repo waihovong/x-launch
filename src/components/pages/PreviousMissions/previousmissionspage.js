@@ -1,45 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import  { Link } from 'react-router-dom';
+import div, { useState, useEffect } from 'react';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Navbar from '../../layout/navigation/Navbar/Navbar';
 import MissionCard from '../../layout/card/MissionCard';
 import StatusCard from '../../layout/card/StatusCard';
+import DefaultPatch from '../../../assets/images/Rockets/MissionPatch.png';
 
 export default function PreviousLaunch() {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
-    const [prevLaunch, setPrevLaunch] = useState([]);
+    const [previousLaunch, setPreviousLaunch] = useState([]);
     const [launchPad, setLaunchPad] = useState([]);
     const [rockets, setRockets] = useState([]);
+    const [upcomingMission, setUpcomingMission] = useState([]);
  
     useEffect(() => {
-        fetchSpaceX();
-        async function fetchSpaceX() {
+
+        const base = "https://api.spacexdata.com/v4";
+        fetchPreviousMissions();
+        async function fetchPreviousMissions() {
             try {
-                //TODO: rewrite api calls to landingpage.js
-            const url = "https://api.spacexdata.com/v4/launches/past"            
-            const response = await fetch(url);
-            const data = await response.json();
-            setPrevLaunch(data.reverse())
 
-            const url2 = "https://api.spacexdata.com/v4/launchpads"
-            const response2 = await fetch(url2);
-            const data2 = await response2.json();
-            setLaunchPad(data2);
+                const previousLaunchResponse = await fetch(`${base}/launches/past`);
+                const previousLaunchJson = await previousLaunchResponse.json();
+                setPreviousLaunch(previousLaunchJson.reverse());
+                
+                const launchPadResponse = await fetch(`${base}/launchpads`);
+                const launchPadJson = await launchPadResponse.json();
+                setLaunchPad(launchPadJson);
+                
+                const rocketsResponse = await fetch(`${base}/rockets`);
+                const rocketsJson = await rocketsResponse.json();
+                setRockets(rocketsJson);
 
-            const url3 = "https://api.spacexdata.com/v4/rockets"
-            const response3 = await fetch(url3);
-            const data3 = await response3.json();
-            setRockets(data3);
+                const upcomingMissionResponse = await fetch(`${base}/launches/upcoming`);
+                const upcomingMissionJson = await upcomingMissionResponse.json();
+                setUpcomingMission(upcomingMissionJson);
 
-            setIsLoaded(true);
+                setIsLoaded(true);
             } catch (error) {
                 setIsLoaded(false);
                 setError(error);
             }
-        }
+        };
     }, []);
+
 
     //TODO: Find how to map specific const and use them later without needing to map them again, return flat?
     // const getRocketID = rockets.map((rocket, index) => {
@@ -71,72 +76,88 @@ export default function PreviousLaunch() {
                             <div className='h-40 text-8xl -mt-14 text-white font-semibold grid justify-start flex-col z-40'>
                                 MISSIONS
                             </div>
-                            {prevLaunch.map((previousMission, index) => {
+                            
+                            {previousLaunch.map((previousMission, index) => {
                                 return (
-                                    //TODO: responsive design on cards, smaller = square possibly remove logo
-                                    //TODO: On click of mission card, go to specific mission link to new page
-                                    <MissionCard
-                                    //TODO: Find default mission f9 logo patch
-                                    missionPatch={previousMission.links.patch.small} 
-                                    missionName={previousMission.name}
-                                    flightNumber= {previousMission.flight_number}
-                                    time={new Date (previousMission.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
-                                    //TODO: Find utc string time component, maybe use momentjs
-                                    // time={new Date (previousMission.date_utc).toUTCString("en-GB", dateTimeOption)}
-                                    //TODO: Find if there is better way to map and return just rocket.id and rocket.name
-                                    //so no mapping is needed here and only comparison is name
-                                    rocket={rockets.map((rocket, index) => {
-                                        if(rocket.id === previousMission.rocket) {
-                                            return <>{rocket.name}</>
+                                    <div className='row' key={index}>
+                                        <MissionCard
+                                        //TODO: Find out way to key list this nicer
+                                        //TODO: Find default mission f9 logo patch
+                                        //TODO:responsive design on cards, smaller = square possibly remove logo
+                                        //TODO:On click of mission card, go to specific mission link to new page
+                                        //TODO: Find utc string time component, maybe use momentjs
+                                        // time={new Date (previousMission.date_utc).toUTCString("en-GB", dateTimeOption)}
+                                        //TODO: Find if there is better way to map and return just rocket.id and rocket.name
+                                        //so no mapping is needed here and only comparison is name
+                                        missionPatch={previousMission.links.patch.small || DefaultPatch} 
+                                        missionName={previousMission.name}
+                                        flightNumber= {previousMission.flight_number}
+                                        time={new Date (previousMission.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
+                                        rocket={rockets.map((rocket, index) => {
+                                            if(rocket.id === previousMission.rocket) {
+                                                return (
+                                                    <li key={index} className="list-none">
+                                                        {rocket.name}
+                                                    </li>
+                                                )
+                                            }
+                                        })}
+                                        launchPad={launchPad.map((listOfLaunchPads, index) => {
+                                            if(listOfLaunchPads.id === previousMission.launchpad) {
+                                                return ( 
+                                                    <li key={index} className="list-none">
+                                                        {listOfLaunchPads.name}
+                                                    </li>
+                                                )
+                                            }
+                                        })}
+                                        status={
+                                            <StatusCard 
+                                            isSuccessful={previousMission.success}
+                                            />
                                         }
-                                    })}
-                                    launchPad={launchPad.map((listOfLaunchPads, index) => {
-                                        if(listOfLaunchPads.id === previousMission.launchpad) {
-                                            return <>{listOfLaunchPads.name}</>
-                                        }
-                                    })}
-                                    status={
-                                        <StatusCard 
-                                        isSuccessful={previousMission.success}
                                         />
-                                    }
-                                    />
+                                    </div>
                                 )
                             })}
                         </div>
-                        <div className='grid'>
+                        <div className='grid max-h-1'>
                             <div className='z-40 h-40  mb-10 text-6xl text-white font-semibold flex justify-end flex-col'>
                                 UPCOMING
                             </div>
-                            {prevLaunch.map((previousMission, index) => {
+                            {upcomingMission.slice(0,3).map((upcomingLaunches, index) => {
                                 return (
-                                    //TODO: On click of mission card, go to specific mission link to new page
-                                    <MissionCard
-                                    //TODO: Find default mission f9 logo patch
-                                    missionPatch={previousMission.links.patch.small} 
-                                    missionName={previousMission.name}
-                                    flightNumber={previousMission.flight_number}
-                                    time={new Date (previousMission.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
-                                    //TODO: Find utc string time component, maybe use momentjs
-                                    // time={new Date (previousMission.date_utc).toUTCString("en-GB", dateTimeOption)}
-                                    //TODO: Find if there is better way to map and return just rocket.id and rocket.name
-                                    //so no mapping is needed here and only comparison is name
-                                    rocket={rockets.map((rocket, index) => {
-                                        if(rocket.id === previousMission.rocket) {
-                                            return <>{rocket.name}</>
+                                    <div className='row' key={index}>
+                                        <MissionCard
+                                        missionPatch={upcomingLaunches.links.patch.small || DefaultPatch} 
+                                        missionName={upcomingLaunches.name}
+                                        flightNumber= {upcomingLaunches.flight_number}
+                                        time={new Date (upcomingLaunches.date_utc).toLocaleDateString("en-GB", dateTimeOption)}
+                                        rocket={rockets.map((rocket, index) => {
+                                            if(rocket.id === upcomingLaunches.rocket) {
+                                                return (
+                                                    <li key={index} className="list-none">
+                                                        {rocket.name}
+                                                    </li>
+                                                )
+                                            }
+                                        })}
+                                        launchPad={launchPad.map((listOfLaunchPads, index) => {
+                                            if(listOfLaunchPads.id === upcomingLaunches.launchpad) {
+                                                return (
+                                                    <li key={index} className="list-none">
+                                                        {listOfLaunchPads.name}
+                                                    </li>
+                                                )
+                                            }
+                                        })}
+                                        status={
+                                            <StatusCard 
+                                            isSuccessful={"Upcoming"}
+                                            />
                                         }
-                                    })}
-                                    launchPad={launchPad.map((listOfLaunchPads, index) => {
-                                        if(listOfLaunchPads.id === previousMission.launchpad) {
-                                            return <>{listOfLaunchPads.name}</>
-                                        }
-                                    })}
-                                    status={
-                                        <StatusCard 
-                                        isSuccessful={previousMission.success}
                                         />
-                                    }
-                                    />
+                                    </div>
                                 )
                             })}
                         </div>
