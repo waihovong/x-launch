@@ -14,13 +14,12 @@ export default function LandingPage() {
 
 	useEffect(() => {
 
-		const apiConstant = "https://api.spacexdata.com/v4";
+		const base = "https://api.spacexdata.com/v4";
 		fetchLandingPage();
-		//call constant here or something
 		async function fetchLandingPage() {
 			try {
-				const nextLaunchResponse = await fetch(`${apiConstant}/launches/next`);
-				const launchPadResponse = await fetch(`${apiConstant}/launchpads`);
+				const nextLaunchResponse = await fetch(`${base}/launches/next`);
+				const launchPadResponse = await fetch(`${base}/launchpads`);
 				
 				const nextLaunchJson = await nextLaunchResponse.json();
 				const launchPadJson = await launchPadResponse.json();
