@@ -16,7 +16,7 @@ function Navbar() {
                 <div className='flex w-full items-center '>
                     <ul className='flex justify-between w-full xs:grid xs:grid-cols-2 xs:justify-center'>
                         <li className='text-2xl font-semibold sm:text-base xs:text-base xs:text-start'>
-                            <Link to="/Previous">MISSIONS</Link>
+                            <Link to="/Missions">MISSIONS</Link>
                         </li>
                         <li className='text-2xl font-semibold sm:text-base xs:text-base xs:text-end'>
                             <Link to='/rocket/falcon9'>FALCON 9 </Link>

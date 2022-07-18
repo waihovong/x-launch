@@ -5,7 +5,7 @@ import Navbar from './components/layout/navigation/Navbar/Navbar';
 import LandingPage from './components/pages/Landingpage/landingpage';
 import FalconHeavy from './components/vehicle_falconheavy';
 import Starship from './components/vehicle_starship';
-import PreviousLaunch from './components/pages/PreviousMissions/previousmissionspage';
+import Missions from './components/pages/Missions/missionspage';
 import Launch from './components/launch';
 import F9 from './components/vehicle_falcon9';
 
@@ -17,8 +17,8 @@ function App() {
 					<Route exact path="/">
 						<LandingPage />
 					</Route>
-					<Route path='/Previous'>
-						< PreviousLaunch />
+					<Route path='/Missions'>
+						<Missions />
 					</Route>
 					{/* <Route path='/rocket/falcon9'>
 						< F9 />

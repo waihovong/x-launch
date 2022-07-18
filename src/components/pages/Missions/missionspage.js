@@ -6,7 +6,7 @@ import MissionCard from '../../layout/card/MissionCard';
 import StatusCard from '../../layout/card/StatusCard';
 import DefaultPatch from '../../../assets/images/Rockets/MissionPatch.png';
 
-export default function PreviousLaunch() {
+export default function Missions() {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
     const [previousLaunch, setPreviousLaunch] = useState([]);
@@ -17,8 +17,8 @@ export default function PreviousLaunch() {
     useEffect(() => {
 
         const base = "https://api.spacexdata.com/v4";
-        fetchPreviousMissions();
-        async function fetchPreviousMissions() {
+        spaceXMissions();
+        async function spaceXMissions() {
             try {
 
                 const previousLaunchResponse = await fetch(`${base}/launches/past`);
