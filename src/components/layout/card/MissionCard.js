@@ -2,7 +2,7 @@ import React from "react";
 
 function MissionCard({missionName, time, status, flightNumber, rocket, launchPad, missionPatch}) {
     return (
-        <div className="container max-w-3xl flex flex-row justify-end p-2 bg-[#1e293b] rounded-md mb-3 md:max-w-md xs:mb-1">
+        <div className="container max-w-3xl flex flex-row justify-end p-2 bg-[#1e293b] rounded-md mb-3 md:max-w-md xs:mb-1 bg-gradient-to-t from-gray-900 via-gray-900 to-slate hover:from-gray-700 to-black">
 			<div className="flex md:hidden xs:h-fit xs:w-fit">
 				<img className="flex object-contain h-28 w-48 xs:h-16 xs:w-28" src={missionPatch} />
 			</div>
@@ -11,7 +11,7 @@ function MissionCard({missionName, time, status, flightNumber, rocket, launchPad
 					<div >
 						<label className="font-bold text-gray-300 text-sm md:text-xs sm:text-xs xs:text-xs xs:hidden">Mission Name</label>
 					</div>
-					<div className="xs:w-20 xs:">
+					<div className="xs:w-20">
 						<span className="text-white text-lg font-semibold whitespace-normal md:text-sm sm:text-sm xs:text-xs xs:flex xs:break-normal xs:w-11/12">{missionName}</span>
 					</div>
 					<div>

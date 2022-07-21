@@ -29,7 +29,7 @@ function App() {
 					<Route path='/rocket/starship'>
 						< Starship />
 					</Route> */}
-					{/* <Route path='/launch/:id' component={Launch}></Route> */}
+					<Route path='/launch/:id' component={Launch}></Route>
 				</Switch>
 			</HashRouter>
 		</div>
