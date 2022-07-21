@@ -8,7 +8,9 @@ module.exports = {
       backgroundImage: {
         'landing-image' : "url('/src/assets/images/Hero/landing-image.png')",
         'landing-image-gradient' : "linear-gradient(0deg, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Hero/landing-image.png')",
-        'missions-image': "url('/src/assets/images/Wallpapers/dragon-wallpaper.jpg')"
+        'missions-image': "url('/src/assets/images/Wallpapers/dragon-wallpaper.jpg')",
+        'falcon_launch': "url('/src/assets/images/Wallpapers/falcon9_2.jpg')",
+        'falcon_launch_2': "url('/src/assets/images/Wallpapers/falcon9.jpg')",
       },
       height: {
         "10v": "10vh",
