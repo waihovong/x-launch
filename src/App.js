@@ -3,11 +3,11 @@ import  {BrowserRouter as HashRouter, Switch, Route, Router} from 'react-router-
 
 import Navbar from './components/layout/navigation/Navbar/Navbar';
 import LandingPage from './components/pages/Landingpage/landingpage';
-import FalconHeavy from './components/vehicle_falconheavy';
-import Starship from './components/vehicle_starship';
+import FalconHeavy from './components/pages/Rockets/vehicle_falconheavy';
+import Starship from './components/pages/Rockets/vehicle_starship';
 import Missions from './components/pages/Missions/missionspage';
-import Launch from './components/launch';
-import F9 from './components/vehicle_falcon9';
+import Launch from './components/pages/Missions/missionreplay';
+import Falcon9 from './components/pages/Rockets/vehicle_falcon9';
 
 function App() {
 	return (
@@ -20,15 +20,16 @@ function App() {
 					<Route path='/Missions'>
 						<Missions />
 					</Route>
-					{/* <Route path='/rocket/falcon9'>
-						< F9 />
+					<Route path='/rocket/falcon9'>
+						< Falcon9 />
 					</Route>
+					 
 					<Route path='/rocket/falconheavy'>
 						< FalconHeavy />
 					</Route>
 					<Route path='/rocket/starship'>
 						< Starship />
-					</Route> */}
+					</Route>
 					<Route path='/launch/:id' component={Launch}></Route>
 				</Switch>
 			</HashRouter>
