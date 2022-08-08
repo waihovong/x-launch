@@ -17,6 +17,10 @@ module.exports = {
         'starship_hero_2' : "linear-gradient(0deg, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Wallpapers/starship_wall_2.jpg')",
         'starship_hero_3' : "linear-gradient(0deg, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Wallpapers/starship_wall_3.jpg')",
         'starship_hero_4' : "linear-gradient(0deg, rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Wallpapers/starship_wall_4.jpg')",
+        'launchpad_hero' : "linear-gradient(0deg, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Wallpapers/launchpad_hero.jpg')",
+        'landingpad_hero' : "linear-gradient(0deg, rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Wallpapers/landingpad_hero.png')",
+        'launch_hero' : "linear-gradient(0deg, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.3)), url('/src/assets/images/Wallpapers/launch_hero.jpg')",
+
         
       },
       height: {
