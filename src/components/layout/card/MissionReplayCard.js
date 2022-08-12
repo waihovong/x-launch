@@ -15,7 +15,7 @@ export default function MissionReplayCard(props) {
             </div>
             <hr/>
             {!isOpened && 
-                <div className="flex mt-3 justify-between">
+                <div className="grid grid-cols-3 mt-3 justify-around md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1">
                     <div>
                         {props.card_1}
                     </div>

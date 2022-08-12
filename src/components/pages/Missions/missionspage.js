@@ -67,10 +67,10 @@ export default function Missions() {
     if(error) {
         return <div>Error: {error.message}</div>
     } else if (!isLoaded) {
-        return <div className="loading-progress"> <CircularProgress color="secondary" /></div>
+        return <div className="bg-missions-image bg-center bg-no-repeat min-h-screen [background-position-x:40%]"></div>
         } else {
             return (
-                <div className='bg-gradient-to-b from-slate-900 to-black min-h-screen'>
+                <div className='bg-gradient-to-l from-black via-zinc-800 to-black min-h-screen'>
                     <div className='bg-missions-image h-30v bg-no-repeat [background-position-y:30%] [background-position-x:40%] md:[background-position-x:35%] sm:[background-position-x:30%] xs:[background-position-x:25%]'>
                         <Navbar/>
                     </div>
@@ -79,7 +79,7 @@ export default function Missions() {
                             <div className='h-32 text-8xl -mt-14 text-white font-semibold grid justify-start flex-col z-40 md:text-6xl md:h-20 md:mb-2 md:flex md:justify-end sm:text-4xl sm:h-16 sm:flex sm:justify-end xs:text-4xl xs:h-16 xs:justify-center xs:text-slate-200'>
                                 MISSIONS
                             </div>
-                            <div className='row lg:max-h-[58vh] overflow-auto xs:max-h-[30vh] xs:flex xs:flex-col xs:mb-2 '>
+                            <div className='row lg:max-h-[58vh] overflow-auto xs:max-h-[30vh] '>
                                 {previousLaunch.map((previousMission, index) => {
                                     return (
                                         <div className='row' key={index}>
@@ -126,7 +126,7 @@ export default function Missions() {
                                 })}
                             </div>
                         </div>
-                        <div className='row max-h-0 pr-3 xs:flex xs:flex-col xs:max-w-md xs:mx-auto xs:items-center'>
+                        <div className='row max-h-0 pr-3 xs:flex xs:flex-col xs:max-w-md xs:mx-auto xs:items-center xs:min-h-screen'>
                             <div className='h-14 text-4xl text-white font-semibold flex justify-end flex-col z-40 mb-4 md:text-3xl md:h-10 md:mb-1 sm:text-2xl sm:h-8 sm:flex sm:justify-end sm:mb-1 xs:text-2xl xs:h-8 xs:mb-1 xs:hidden'>
                                 UPCOMING
                             </div>
@@ -173,12 +173,12 @@ export default function Missions() {
                                         //TODO: Add image to launch sites with props and link?
                                         <div className='grid justify-start max-w-fit' key={index}>
                                             <LaunchSites 
-                                            name={launchPadInfo.name}
-                                            locality={launchPadInfo.locality}
-                                            region={launchPadInfo.region}
-                                            launchAttempts={launchPadInfo.launch_attempts}
-                                            launchSuccess={launchPadInfo.launch_successes}
-                                            status={launchPadInfo.status}
+                                                name={launchPadInfo.name}
+                                                locality={launchPadInfo.locality}
+                                                region={launchPadInfo.region}
+                                                launchAttempts={launchPadInfo.launch_attempts}
+                                                launchSuccess={launchPadInfo.launch_successes}
+                                                status={launchPadInfo.status}
                                             />
                                         </div>
                                     )

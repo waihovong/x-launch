@@ -45,7 +45,7 @@ export default function VehicleFalcon9() {
                     <span className="flex items-end justify-center xs:text-center">FALCON 9</span>
                 </div>
             </div>
-            <div className="h-100v flex flex-row w-full bg-gradient-to-tr from-slate-900 to-black min-h-screen xs:flex  xs:flex-col">
+            <div className="h-100v flex flex-row w-full bg-gradient-to-t from-black via-zinc-900 to-black min-h-screen xs:flex  xs:flex-col">
                 <div className="flex flex-col justify-center w-screen ml-3 md:flex md:flex-col md:w-screen md:ml-2 sm:w-8/12 xs:ml-0">
                     <div className="text-4xl font-semibold uppercase text-white flex justify-center mb-10 md:flex md:mb-4 xs:mb-0">
                     </div>
@@ -83,10 +83,10 @@ export default function VehicleFalcon9() {
                     <div className="relative">
                         <div className="relative z-10">
                             <p className="text-white text-7xl font-light uppercase stroke-current">reliable & safe</p>
-                            <p className="text-white text-lg max-w-md pb-5">{rocket.description}</p>
+                            <p className="text-white max-w-md pb-5">{rocket.description}</p>
                             <a href={rocket.wikipedia} className="text-white uppercase font-semibold hover:text-yellow-500">Read more</a>
                         </div>
-                        <img className="rounded-tr-[40px] rounded-bl-[40px] absolute inset-y-0 right-20 -top-20 w-1/2" src={falcon9Launch} />
+                        <img className="rounded-tr-[40px] rounded-bl-[40px] absolute inset-y-0 right-20 -top-10 w-1/2" src={falcon9Launch} />
                     </div>
                     <div>
                         <p className="text-white text-5xl font-semibold uppercase stroke-current">First Stage</p>
@@ -109,3 +109,4 @@ export default function VehicleFalcon9() {
 
 }
 //TODO: Add arrow pointing down on hero page
+//TODO: Find better gradient backgrounds for the images

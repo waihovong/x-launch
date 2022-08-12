@@ -3,9 +3,7 @@ import StatsCard from "../../layout/grid/StatisticsCard";
 import Navbar from "../../layout/navigation/Navbar/Navbar";
 import StarshipRender from '../../../assets/images/Rockets/starship_ren_high.png'
 import starship_1 from '../../../assets/images/Wallpapers/starship_wall_1.jpg'
-import starship_2 from '../../../assets/images/Wallpapers/starship_wall_2.jpg'
 import starship_3 from '../../../assets/images/Wallpapers/starship_wall_3.jpg'
-import starship_4 from '../../../assets/images/Wallpapers/starship_wall_4.jpg'
 import TechnicalDetailsTable from "../../layout/grid/TechnicalDetailsTable";
 import InformationCard from "../../layout/grid/InformationCard";
 
@@ -43,7 +41,7 @@ export default function VehicleStarship() {
                     <span className="flex items-end justify-center xs:text-center text-white">STARSHIP</span>
                 </div>
             </div>
-            <div className="h-100v flex flex-row w-full bg-gradient-to-br from-slate-800 to-black min-h-screen xs:flex  xs:flex-col">
+            <div className="h-100v flex flex-row w-full bg-gradient-to-t from-black via-zinc-900 to-black min-h-screen xs:flex  xs:flex-col">
                 <div className="flex flex-col justify-center w-screen ml-3 md:flex md:flex-col md:w-screen md:ml-2 sm:w-8/12 xs:ml-0">
                     <div className="text-white flex flex-col items-center justify-center h-60v xs:mt-0">
                         <TechnicalDetailsTable
@@ -78,11 +76,11 @@ export default function VehicleStarship() {
                     </div>
                     <div className="relative">
                         <div className="relative z-10">
-                            <p className="text-white text-6xl font-light uppercase stroke-current max-w-3xl">Designed for Crew and Cargo</p>
-                            <p className="text-white text-standard max-w-md pb-5">{rocket.description}</p>
+                            <p className="text-white text-5xl font-light uppercase stroke-current max-w-3xl">Designed for Crew and Cargo</p>
+                            <p className="text-white max-w-sm pb-5">{rocket.description}</p>
                             <a href={rocket.wikipedia} className="text-white uppercase font-semibold hover:text-yellow-500">Read more</a>
                         </div>
-                        <img className="rounded-tr-[40px] rounded-bl-[40px] absolute inset-y-0 right-20 top-20 w-1/2" src={starship_1} />
+                        <img className="rounded-tr-[40px] rounded-bl-[40px] absolute inset-y-0 right-20 top-20 w-1/2 opacity-80" src={starship_1} />
                     </div>
                     <div>
                         <p className="text-white text-5xl font-semibold uppercase stroke-current">First Stage</p>

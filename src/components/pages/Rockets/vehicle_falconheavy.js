@@ -42,7 +42,7 @@ export default function VehicleFalconHeavy() {
                     <span className="flex items-end justify-center xs:text-center text-white">FALCON HEAVY</span>
                 </div>
             </div>
-            <div className="h-100v flex flex-row w-full bg-gradient-to-b from-slate-800 to-black min-h-screen xs:flex  xs:flex-col">
+            <div className="h-100v flex flex-row w-full bg-gradient-to-t from-black via-zinc-900 to-black min-h-screen xs:flex  xs:flex-col">
                 <div className="flex flex-col justify-center w-screen ml-3 md:flex md:flex-col md:w-screen md:ml-2 sm:w-8/12 xs:ml-0">
                     <div className="text-white flex flex-col items-center justify-center h-60v xs:mt-0">
                         <TechnicalDetailsTable
@@ -77,11 +77,11 @@ export default function VehicleFalconHeavy() {
                     </div>
                     <div className="relative">
                         <div className="relative z-10">
-                            <p className="text-white text-7xl font-light uppercase stroke-current">27 Merlin engines</p>
-                            <p className="text-white text-lg max-w-md pb-5">{rocket.description}</p>
+                            <p className="text-white text-5xl font-light uppercase stroke-current">27 Merlin engines</p>
+                            <p className="text-white max-w-sm pb-5">{rocket.description}</p>
                             <a href={rocket.wikipedia} className="text-white uppercase font-semibold hover:text-yellow-500">Read more</a>
                         </div>
-                        <img className="rounded-tr-[40px] rounded-bl-[40px] absolute inset-y-0 right-20 -top-20 w-1/2" src={falconHeavy_1} />
+                        <img className="rounded-tr-[40px] rounded-bl-[40px] absolute inset-y-0 right-20 top-0 w-1/2" src={falconHeavy_1} />
                     </div>
                     <div>
                         <p className="text-white text-5xl font-semibold uppercase stroke-current">First Stage</p>
