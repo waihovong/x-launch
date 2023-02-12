@@ -6,7 +6,7 @@ import LandingPage from './components/pages/Landingpage/landingpage';
 import FalconHeavy from './components/pages/Rockets/vehicle_falconheavy';
 import Starship from './components/pages/Rockets/vehicle_starship';
 import Missions from './components/pages/Missions/missionspage';
-import Launch from './components/pages/Missions/missionreplay';
+import Launch from './components/pages/Missions/missionreplaypage';
 import Falcon9 from './components/pages/Rockets/vehicle_falcon9';
 
 function App() {

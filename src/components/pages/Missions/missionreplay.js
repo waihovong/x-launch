@@ -85,7 +85,7 @@ export default function LaunchDetails({match}) {
             return (
                 <div className='bg-starship_hero_4 bg-cover bg-center bg-no-repeat min-h-screen pb-10'>
                     <Navbar/>
-                    <div className='flex justify-evenly h-[65vh] xs:flex xs:flex-col'>
+                    <div className='flex justify-center h-[65vh] xs:flex xs:flex-col'>
                         {!loadingComponent ?   
                             <div className='w-1/2 flex justify-center items-center'><CircularProgress className='w-[60px]' color="secondary" /></div>
                         :
@@ -152,7 +152,7 @@ export default function LaunchDetails({match}) {
                                                     <div key={index}>
                                                         <MissionDetailCard 
                                                             background={"bg-launchpad_hero"}
-                                                            label_one={"Landing pad"}
+                                                            label_one={"Launch site"}
                                                             label_one_description={launchPadID.name}
                                                             label_two={"Location"}
                                                             label_two_description={launchPadID.region}
@@ -194,11 +194,11 @@ export default function LaunchDetails({match}) {
                                 </div>
                             </div>
                         }
-                        <div className='bg-white pb-3 rounded'>
-                            <div className='text-xl capitalize font-semibold px-3 py-2'>
+                        <div className='bg-white pb-'>
+                            <div className='text-xl capitalize text-center font-semibold px-5 py-6'>
                                 <span>Watch Previous Missions</span>
                             </div>
-                            <div className='bg-white p-3 rounded-md max-h-full overflow-auto'>
+                            <div className='bg-white p-5 rounded-md max-h-full overflow-auto'>
                             {previousLaunch.map((previousMission, index) => {
                                 return (
                                     <div key={index}>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function MissionReplayCard(props) {
     const [isOpened, setIsOpened] = useState(false);
     return (
-        <div className="bg-white rounded-bl-xl rounded-br-xl p-5">
+        <div className="bg-white rounded-bl-xl p-5">
             <div className="flex flex-row">
                 <div className={`uppercase font-bold text-2xl mr-10 ${!isOpened ? "text-black" : "text-slate-400"}`}>
                     <button className="uppercase" onClick={() => setIsOpened(!isOpened)} disabled={!isOpened}>{props.mission_details}</button>
