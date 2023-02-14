@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import CircularProgress from '@material-ui/core/CircularProgress';
-
 import Navbar from '../../layout/navigation/Navbar/Navbar';
 import UpcomingMission  from "../../../components/layout/card/UpcomingMission";
 import MissionCard from "../../layout/card/MissionCard";
+
+import  { fetchNextLaunchData, fetchLaunchPadData } from '../../../api/spacex_api'
 
 export default function LandingPage() {
 	const [error, setError] = useState(null);
@@ -13,36 +13,31 @@ export default function LandingPage() {
 	const [launchPad, setLaunchPad] = useState([]);
 
 	useEffect(() => {
-
-		const base = "https://api.spacexdata.com/v4";
-		fetchLandingPage();
-		async function fetchLandingPage() {
+		async function fetchData() {
 			try {
-				const nextLaunchResponse = await fetch(`${base}/launches/next`);
-				const launchPadResponse = await fetch(`${base}/launchpads`);
-				
-				const nextLaunchJson = await nextLaunchResponse.json();
-				const launchPadJson = await launchPadResponse.json();
 
-				setNextLaunch(nextLaunchJson);
-				setLaunchPad(launchPadJson);
+				const nextLaunch = await fetchNextLaunchData();
+				const launchPads = await fetchLaunchPadData();
+
+				setNextLaunch(nextLaunch);
+				setLaunchPad(launchPads);
 
 				setIsLoaded(true);
+
 			} catch(error) {
 				setIsLoaded(false);
 				setError(error);
 			}
 		};
+		fetchData();
 	}, []);
 
-	const getLaunchPadName = launchPad.map((listLaunchPad, index) => {
-		if (listLaunchPad.id === nextLaunch.launchpad ) {
-			return listLaunchPad.name;
-		}
+	const getLaunchPadName = launchPad.map((listLaunchPad) => {
+		return listLaunchPad.id === nextLaunch.launchpad ? listLaunchPad.name : null;
 	});
 	
 	return (
-		//TODO: add error loading page or skeleton loading page
+		// TODO: add error loading page or skeleton loading page
 		// TODO: Change the responsiveness of the nav bar for mobiles - burger menu
 		<div className="bg-landing-image-gradient bg-cover min-h-screen bg-no-repeat bg-center">
 			<Navbar/>
