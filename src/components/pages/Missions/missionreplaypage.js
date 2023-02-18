@@ -13,6 +13,7 @@ import DefaultPatch from '../../../assets/images/Rockets/MissionPatch.png';
 import MissionCardCompact from '../../layout/card/MissionCardCompact';
 
 import Slider from "react-slick";
+import { fetchBoosterCoreData, fetchLandingPadData, fetchLaunchByIdData, fetchLaunchPadData, fetchPreviousLaunchData, fetchRocketData } from '../../../api/spacex_api';
 
 export default function LaunchDetails({match}) {
     const [error, setError] = useState(null)
@@ -26,50 +27,36 @@ export default function LaunchDetails({match}) {
     const [loadingComponent, setLoadingComponent] = useState(false);
 
     useEffect(() => {
-        const base = "https://api.spacexdata.com/v4";            
         let isReloaded = true;
-        const fetchSpaceX = async () => {
-            const selectedLaunch = `https://api.spacexdata.com/v4/launches/${match.params.id}`;
-            const launchPad = "https://api.spacexdata.com/v4/launchpads";
-            const rocket = "https://api.spacexdata.com/v4/rockets";
-            const landingPad = "https://api.spacexdata.com/v4/landpads";
-            const boosterCore = "https://api.spacexdata.com/v4/cores";
-            
-                const selectedLaunchResponse = await fetch(selectedLaunch);
-                const selectedLaunchData = await selectedLaunchResponse.json();
-
-                const launchPadResponse = await fetch(launchPad);
-                const launchPadData = await launchPadResponse.json();
-
-                const rocketResponse = await fetch(rocket);
-                const rocketData = await rocketResponse.json();
+        async function fetchData() {
+            try {
+                const selectedLaunchData = await fetchLaunchByIdData(`${match.params.id}`);
+                const launchPadData = await fetchLaunchPadData();
+                const rocketData = await fetchRocketData();
+                const landingPadData = await fetchLandingPadData();
+                const boosterCoreData = await fetchBoosterCoreData();
+                const previousLaunchData = await fetchPreviousLaunchData();
                 
-                const landingPadResponse = await fetch(landingPad);
-                const landingPadData = await landingPadResponse.json();
-                
-                const boosterCoreReponse = await fetch(boosterCore);
-                const boosterCoreData = await boosterCoreReponse.json();
-
-                const previousLaunchResponse = await fetch(`${base}/launches/past`);
-                const previousLaunchJson = await previousLaunchResponse.json();
-
-                if (isReloaded) {
-                    setLaunch(selectedLaunchData);
-                    setLaunchPad(launchPadData);
-                    setRockets(rocketData);
-                    setLandingPads(landingPadData);
-                    setBoosterCores(boosterCoreData);
-                    setPreviousLaunch(previousLaunchJson.reverse());
-                    setIsLoaded(true);
-                    setLoadingComponent(true);
-                }            
-
-            }
-            fetchSpaceX()
+                    if (isReloaded) {
+                        setLaunch(selectedLaunchData);
+                        setLaunchPad(launchPadData);
+                        setRockets(rocketData);
+                        setLandingPads(landingPadData);
+                        setBoosterCores(boosterCoreData);
+                        setPreviousLaunch(previousLaunchData.reverse());
+                        setIsLoaded(true);
+                        setLoadingComponent(true);
+                    }
+                    
+                } catch (error) {
+                    setIsLoaded(false);
+                    setError(error);
+                }
+            };
+            fetchData();
             return () => isReloaded = false;
-
-    }, [match]);
-
+        }, [match]);
+        
     const dateTimeOption = {
         day: "2-digit",
         month: "long",

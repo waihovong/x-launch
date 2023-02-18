@@ -51,9 +51,9 @@ module.exports = {
       },
     },
     fontFamily: {
-      navigation: ['Epilogue', 'sans-serif'],
-      header: ['Epilogue', 'sans-serif'],
-      standard: ['Epilogue', 'sans-serif'],
+      navigation: ['Montserrat', 'sans-serif'],
+      header: ['Montserrat', 'sans-serif'],
+      standard: ['Montserrat', 'sans-serif'],
     },
   },
   plugins: [],

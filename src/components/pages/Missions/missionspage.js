@@ -8,6 +8,7 @@ import StatusCard from '../../layout/card/StatusCard';
 import DefaultPatch from '../../../assets/images/Rockets/MissionPatch.png';
 import LaunchSites from '../../layout/card/LaunchSites';
 import Images from '../../../assets/images/Wallpapers/dragon.jpg'
+import { fetchLaunchPadData, fetchPreviousLaunchData, fetchRocketData, fetchUpcomingLaunchData } from '../../../api/spacex_api';
 
 export default function Missions() {
     const [error, setError] = useState(null)
@@ -18,27 +19,17 @@ export default function Missions() {
     const [upcomingMission, setUpcomingMission] = useState([]);
  
     useEffect(() => {
-
-        const base = "https://api.spacexdata.com/v4";
-        spaceXMissions();
-        async function spaceXMissions() {
+        async function fetchData() {
             try {
+                const previousLaunchData = await fetchPreviousLaunchData();
+                const launchPadData = await fetchLaunchPadData();
+                const upcomingMissionData = await fetchUpcomingLaunchData();
+                const rocketData = await fetchRocketData();
 
-                const previousLaunchResponse = await fetch(`${base}/launches/past`);
-                const previousLaunchJson = await previousLaunchResponse.json();
-                setPreviousLaunch(previousLaunchJson.reverse());
-                
-                const launchPadResponse = await fetch(`${base}/launchpads`);
-                const launchPadJson = await launchPadResponse.json();
-                setLaunchPad(launchPadJson);
-                
-                const rocketsResponse = await fetch(`${base}/rockets`);
-                const rocketsJson = await rocketsResponse.json();
-                setRockets(rocketsJson);
-
-                const upcomingMissionResponse = await fetch(`${base}/launches/upcoming`);
-                const upcomingMissionJson = await upcomingMissionResponse.json();
-                setUpcomingMission(upcomingMissionJson);
+                setPreviousLaunch(previousLaunchData.reverse());
+                setLaunchPad(launchPadData);
+                setUpcomingMission(upcomingMissionData);
+                setRockets(rocketData);
 
                 setIsLoaded(true);
             } catch (error) {
@@ -46,16 +37,8 @@ export default function Missions() {
                 setError(error);
             }
         };
+        fetchData();
     }, []);
-
-
-    //TODO: Find how to map specific const and use them later without needing to map them again, return flat?
-    // const getRocketID = rockets.map((rocket, index) => {
-    //     return rocket.id;
-    // });
-    // const getRocketName = rockets.map((rocket, index) => {
-    //     return rocket.name;
-    // })
 
     const dateTimeOption = {
         day: "2-digit",
@@ -80,6 +63,7 @@ export default function Missions() {
                                 MISSIONS
                             </div>
                             <div className='row lg:max-h-[58vh] overflow-auto xs:max-h-[30vh] '>
+                                <div className=''>
                                 {previousLaunch.map((previousMission, index) => {
                                     return (
                                         <div className='row' key={index}>
@@ -124,6 +108,7 @@ export default function Missions() {
                                         </div>
                                     )
                                 })}
+                                </div>
                             </div>
                         </div>
                         <div className='row max-h-0 pr-3 xs:flex xs:flex-col xs:max-w-md xs:mx-auto xs:items-center xs:min-h-screen'>

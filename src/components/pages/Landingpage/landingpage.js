@@ -24,6 +24,7 @@ export default function LandingPage() {
 
 				setIsLoaded(true);
 
+
 			} catch(error) {
 				setIsLoaded(false);
 				setError(error);
@@ -31,7 +32,7 @@ export default function LandingPage() {
 		};
 		fetchData();
 	}, []);
-
+	
 	const getLaunchPadName = launchPad.map((listLaunchPad) => {
 		return listLaunchPad.id === nextLaunch.launchpad ? listLaunchPad.name : null;
 	});
